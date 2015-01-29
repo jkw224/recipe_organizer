@@ -38,10 +38,11 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'apps.recipes',
     'rest_framework',
-    'corsheaders'
+    'corsheaders',
 )
 
 MIDDLEWARE_CLASSES = (
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -55,6 +56,9 @@ ROOT_URLCONF = 'recipe_organizer.urls'
 
 WSGI_APPLICATION = 'recipe_organizer.wsgi.application'
 
+MEDIA_ROOT = '/Users/jonny/dev/recipe_organizer/backend/apps/recipes/media'
+
+MEDIA_URL = '/media/'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
@@ -84,3 +88,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+
+CORS_ORIGIN_WHITELIST = (
+    'localhost:8000',
+    'localhost/',
+)
+
+CORS_ORIGIN_ALLOW_ALL = True
